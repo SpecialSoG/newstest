@@ -1,0 +1,22 @@
+	{% extends 'TestNews/base.html' %}
+
+    {% block content %}
+	    {% for post in posts %}
+	        <div class="post">
+	            <div class="date">
+	            <p>published: {{ post.published_date }}
+	            </div>
+	            <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+	            <p>{{ post.text|linebreaksbr }}</p>
+	            <div>
+                <div>
+                    {% if post.img %}
+                        <img src="{{ post.img.url }}">
+                    {% else %}
+                        {% load static %}
+                            <img src="{% static "image/none.jpg" %}" alt="My IMAGE"/>
+                    {% endif %}
+	            </div>
+	        </div>
+	    {% endfor %}
+    {% endblock content %}
