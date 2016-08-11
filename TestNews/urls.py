@@ -15,7 +15,3 @@ urlpatterns = [
 	url(r'^post/(?P<pk>\d+)/publish/$', views.post_publish, name='post_publish'),
 	url(r'^post/(?P<pk>\d+)/remove/$', views.post_remove, name='post_remove'),
 ]
-
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-urlpatterns += staticfiles_urlpatterns()
-urlpatterns += [url(r'^media/(?P<path>.*)$', 'django.views.static.serve',{'document_root': settings.MEDIA_ROOT, 'show_indexes': True}),]
