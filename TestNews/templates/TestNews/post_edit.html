@@ -1,9 +1,8 @@
     {% extends 'TestNews/base.html' %}
 
     {% block content %}
-        <h1>New post</h1>
+		<h1>{{ post.title }}</h1>
         <form method="POST" class="post-form" enctype="multipart/form-data">
-        <form enctype="multipart/form-data" method="post" action="/foo/">
         	{% csrf_token %}
             {{ form.as_p }}
             <button type="submit" class="save btn btn-default">Save</button>

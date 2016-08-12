@@ -20,7 +20,7 @@ def post_new(request):
             post = form.save(commit=False)
             post.author = request.user
             post.save()
-            return redirect('TestNews.views.post_detail', pk=post.pk)
+            return redirect('post_detail', pk=post.pk)
     else:
         form = PostForm()
     return render(request, 'TestNews/post_edit.html', {'form': form})
@@ -33,7 +33,7 @@ def post_edit(request, pk):
             post = form.save(commit=False)
             post.author = request.user
             post.save()
-            return redirect('TestNews.views.post_detail', pk=post.pk)
+            return redirect('post_detail', pk=post.pk)
     else:
         form = PostForm(instance=post)
     return render(request, 'TestNews/post_edit.html', {'form': form})
@@ -45,9 +45,9 @@ def post_draft_list(request):
 def post_publish(request, pk):
     post = get_object_or_404(Post, pk=pk)
     post.publish()
-    return redirect('TestNews.views.post_detail', pk=pk)
+    return redirect('post_detail', pk=pk)
 
 def post_remove(request, pk):
     post = get_object_or_404(Post, pk=pk)
     post.delete()
-    return redirect('TestNews.views.post_list')
+    return redirect('post_list')
